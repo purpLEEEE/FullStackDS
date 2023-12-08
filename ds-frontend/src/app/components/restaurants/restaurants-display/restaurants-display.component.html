@@ -1,0 +1,28 @@
+<h1> Des restaurants de fou </h1>
+
+<table>
+  <thead>
+    <th>Id</th>
+    <th>Nom</th>
+    <th>Adresse</th>
+    <th>Moyenne</th>
+  </thead>
+  <tr *ngFor="let restaurant of restaurants" appColorDirective="{{restaurant.moyenne}}">
+    <td>
+      {{restaurant.id}}
+    </td>
+    <td>
+      {{restaurant.nom}}
+    </td>
+    <td>
+      {{restaurant.adresse}}
+    </td>
+    <td>
+      {{restaurant.moyenne}}
+    </td>
+    <a routerLink="/restaurants/{{restaurant.id}}">Details</a>
+  </tr>
+</table>
+
+
+

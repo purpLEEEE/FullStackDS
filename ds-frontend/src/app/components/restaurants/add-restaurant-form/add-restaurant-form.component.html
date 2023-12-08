@@ -1,0 +1,34 @@
+<h1>Ajoute ton restaurant favori</h1>
+
+<form #addRestaurantForm="ngForm" (ngSubmit)="submit(addRestaurantForm)">
+  <div>
+    <div>
+      <label>Nom : </label>
+      <input #nom="ngModel" type="text" name="nom" [(ngModel)]="formData.nom" [maxlength]="90" [required]="true"/>
+      <span *ngIf="nom.dirty && nom.errors?.['required']" appErrorDirective>Le nom doit être rempli</span>
+    </div>
+
+    <div>
+      <label>Adresse : </label>
+      <input #adresse="ngModel" type="text" name="adresse" [(ngModel)]="formData.adresse" [maxlength]="255" [required]="true"/>
+      <span *ngIf="adresse.dirty && adresse.errors?.['required']" appErrorDirective>L'adresse doit être remplie</span>
+    </div>
+
+    <div>
+      <label>Tags :</label>
+      <ng-multiselect-dropdown
+        [placeholder]="'Choix du/des tag(s)'"
+        [settings]="dropdownSettings"
+        [data]="dropdownList"
+        (onSelect)="onItemSelect($event)"
+        (onSelectAll)="onSelectAll($event)"
+        (onDeSelect)="onItemDeselect($event)"
+      style="width: 50px"></ng-multiselect-dropdown>
+    </div>
+
+
+  </div>
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+</form>

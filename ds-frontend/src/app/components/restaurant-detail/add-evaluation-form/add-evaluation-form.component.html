@@ -1,0 +1,26 @@
+<h1>Ajoute un commentaire</h1>
+
+<form #addEvaluationForm="ngForm" (ngSubmit)="submit(addEvaluationForm)">
+  <div>
+    <div>
+      <label>Nom : </label>
+      <input #nom="ngModel" type="text" name="nom" [(ngModel)]="formData.nom" [maxlength]="90" [required]="true"/>
+      <span *ngIf="nom.dirty && nom.errors?.['required']" appErrorDirective>Le nom doit être rempli</span>
+    </div>
+
+    <div>
+      <label>Commentaire : </label>
+      <input #commentaire="ngModel" type="text" name="commentaire" [(ngModel)]="formData.commentaire" [maxlength]="255" [required]="true"/>
+      <span *ngIf="commentaire.dirty && commentaire.errors?.['required']" appErrorDirective>L'adresse doit être remplie</span>
+    </div>
+
+    <div>
+      <label> Note : </label>
+      <input #note="ngModel" type="text" name="note" [(ngModel)]="formData.note" [maxlength]="255" [required]="true"/>
+    </div>
+
+  </div>
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+</form>

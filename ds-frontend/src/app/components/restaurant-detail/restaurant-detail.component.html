@@ -1,0 +1,41 @@
+<h1> Détail du restaurant d'id : {{restaurant.id}}</h1>
+
+<table>
+  <thead>
+  <th>Id</th>
+  <th>Nom</th>
+  <th>Adresse</th>
+  <th>Moyenne</th>
+  </thead>
+    <td>
+      {{restaurant.id}}
+    </td>
+    <td>
+      {{restaurant.nom}}
+    </td>
+    <td>
+      {{restaurant.adresse}}
+    </td>
+    <td>
+      {{restaurant.moyenne}}
+    </td>
+</table>
+
+<h1> Ajouter un commentaire : </h1>
+
+<app-add-evaluation-form (evaluationSubmitted)="onEvaluationSubmitted($event)"></app-add-evaluation-form>
+
+<h1> La Liste des avis : </h1>
+<table>
+  <thead>
+  <th>Nom</th>
+  <th>Commentaire</th>
+  <th>Note</th>
+  </thead>
+  <tr *ngFor="let commentaire of restaurant.commentaires">
+    <td>{{commentaire.nom}}</td>
+    <td>{{commentaire.commentaire}}</td>
+    <td>{{commentaire.note}}</td>
+    <button (click)="supprimerCommentaire(commentaire.id)">Supprimer</button>
+  </tr>
+</table>
